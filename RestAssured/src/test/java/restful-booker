@@ -1,0 +1,68 @@
+  POST --- Bir şey(bu projede rezervasyon) oluşturmak için kullanıyoruz.
+
+  curl -X POST \
+    https://restful-booker.herokuapp.com/booking \
+    -H 'Content-Type: application/json' \
+    -d '{
+    "firstname" : "Jim",
+    "lastname" : "Brown",
+    "totalprice" : 111,
+    "depositpaid" : true,
+    "bookingdates" : {
+        "checkin" : "2018-01-01",
+        "checkout" : "2019-01-01"
+    },
+    "additionalneeds" : "Breakfast"
+   }'
+
+
+   PUT --- Parametreleri güncellemek için çağırıyoruz.
+
+       curl -X PUT \
+     https://restful-booker.herokuapp.com/booking/ \
+     -H 'Content-Type: application/json' \
+     -H 'Accept: application/json' \
+     -H 'Cookie: token=abc123' \
+     -d '{
+       "firstname" : "James",
+       "lastname" : "Brown",
+       "totalprice" : 111,
+       "depositpaid" : true,
+       "bookingdates" : {
+           "checkin" : "2018-01-01",
+           "checkout" : "2019-01-01"
+       },
+       "additionalneeds" : "Breakfast"
+   }'
+
+
+  GET --- Listelemek için GET kullanıyoruz
+
+   curl -X GET \
+     https://restful-booker.herokuapp.com/booking
+
+     ID'ye göre listelemek için;
+
+   curl -X GET \
+     curl -i https://restful-booker.herokuapp.com/booking/1
+
+
+   DELETE --- Bir veriyi silmek için kullanıyoruz
+
+     curl -X DELETE \
+       https://restful-booker.herokuapp.com/booking/1 \
+       -H 'Content-Type: application/json' \
+       -H 'Cookie: token=abc123'
+
+
+   PATCH --- Request body içerisindeki YALNIZCA İSTEDİĞİMİZ parametreleri güncellemek için kullanıyoruz.
+
+         curl -X PATCH \
+    https://restful-booker.herokuapp.com/booking/1 \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: application/json' \
+    -H 'Cookie: token=abc123' \
+    -d '{
+      "firstname" : "James",
+      "lastname" : "Brown"
+  }'
